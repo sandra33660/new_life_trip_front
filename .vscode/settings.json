@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/5a9a0c6b-ebaa-425a-b422-be91287a7e27/resourceGroups/NewLifeTripRessources/providers/Microsoft.Web/sites/NewLifeTrip",
+    "appService.deploySubpath": "."
+}
