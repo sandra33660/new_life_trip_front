@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import HeaderOtherPage from "../../HeaderotherPages";
 
 export default function Contact() {
