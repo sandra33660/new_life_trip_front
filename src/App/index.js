@@ -1,13 +1,12 @@
-/* import React from "react";
-import Accueil from "./Pages/Accueil";
-import Voyage from "./Pages/Voyage";
-import Contact from "./Pages/Contact";
-import CGU from "./Pages/CGU";
-
-import "./App.css";
+import React from "react";
+import Accueil from "../Pages/Accueil";
+import Voyage from "../Pages/Voyage";
+import Contact from "../Pages/Contact";
+import CGU from "../Pages/CGU";
+import "../App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Route exact path="/" component={Accueil} />
@@ -17,5 +16,3 @@ function App() {
     </Router>
   );
 }
-
-export default App; */

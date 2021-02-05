@@ -1,63 +1,141 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HeaderOtherPage from "../../HeaderotherPages";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    /*  maxWidth: 345, */
+    marginTop: "56.25%",
+    marginLeft: "56.25%",
+    paddingRight: "60.25%",
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+}));
 
 export default function Voyage() {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("http://localhost:55004/api/v1/Catalog/trip")
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        setData(data);
+      })
+      .catch((e) => {
+        setLoading(false);
+        setError("fetch failed");
+      });
+  }, []);
+
+  if (loading) {
+    return <p>loading..</p>;
+  }
+  if (error !== "") {
+    return <p>ERROR.. : {error}</p>;
+  }
   return (
-    <div>
+    <Grid>
       <HeaderOtherPage />
 
-      <section className="sectionVoyage">
-        <div className="content">
-          <h2 clasname="h2voyage">Les tendances</h2>
-          <div className="cards">
-            <div className="card-box">bordeaux</div> {/* title + photo */}
-            <div className="card-box">paris</div>
-            <div className="card-box">toulouse</div>
-          </div>
-          <div className="cards">
-            <div className="card-box">provence-alpes-cotes-d'azur</div>
-            <div className="card-box">lyon</div>
-            <div className="card-box">nice</div>
-          </div>
-          <div className="cards">
-            <div className="card-box">marseille</div>
-            <div className="card-box">pyrénées</div>
-            <div className="card-box">starsbourg</div>
-          </div>
-          <h2 clasname="h2voyage">Destinations</h2>
-          <div className="cards">
-            <div className="card-box">Montagne</div>
-            <div className="card-box">Plage</div>
-            <div className="card-box">Vallée</div>
-          </div>
-          <div className="cards">
-            <div className="card-box">Insolite</div>
-            <div className="card-box">Festif</div>
-            <div className="card-box">Sensation</div>
-          </div>
-          <div className="cards">
-            <div className="card-box">parc d'attraction</div>
-            <div className="card-box">pyrénées</div>
-            <div className="card-box">week end dans les arbres</div>
-          </div>
-          <h2 clasname="h2voyage">Les activités</h2>
-          <div className="cards">
-            <div className="card-box">saut en parachute</div>
-            <div className="card-box">tyrolienne</div>
-            <div className="card-box">surf</div>
-          </div>
-          <div className="cards">
-            <div className="card-box">bateau</div>
-            <div className="card-box">plongée</div>
-            <div className="card-box">piraterie</div>
-          </div>
-          <div className="cards">
-            <div className="card-box">bapteme de l'air</div>
-            <div className="card-box">sky surf</div>
-            <div className="card-box">parapente</div>
-          </div>
-        </div>
-      </section>
-    </div>
+      {data.map((trip) => (
+        <Grid item xs={2}>
+          <Card className={classes.root} id={trip.idTrip}>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="recipe" className={classes.avatar}>
+                  V
+                </Avatar>
+              }
+              action={
+                <IconButton aria-label="settings">
+                  <MoreVertIcon />
+                </IconButton>
+              }
+              title={trip.title}
+              subheader={trip.startDate}
+            />
+            <CardMedia
+              className={classes.media}
+              image={trip.photo}
+              title="destination"
+            />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {trip.details}
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton aria-label="share">
+                <ShareIcon />
+              </IconButton>
+              <IconButton
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography paragraph>Plus de détails</Typography>
+                <Typography paragraph>{trip.startDate}</Typography>
+                <Typography paragraph>{trip.finalDate}</Typography>
+                <Typography paragraph>{trip.numberOfParticipants}</Typography>
+                <Typography>activités hebergement</Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 }
