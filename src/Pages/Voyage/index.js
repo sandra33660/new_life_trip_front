@@ -57,7 +57,11 @@ export default function Voyage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:55000/api/v1/Catalog/trip")
+    fetch("http://localhost:55000/api/v1/Catalog/trip", {
+      mode: "no-cors",
+      credentials: "include",
+      method: "GET",
+    })
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
