@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "spaceEvently",
     flexGrow: 1,
     marginLeft: "10%",
+    color: "black",
+    textDecoration: "none",
   },
   search: {
     position: "relative",

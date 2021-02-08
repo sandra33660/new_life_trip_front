@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "spaceEvently",
     flexGrow: 1,
     marginLeft: "3%",
+    color: "#000000",
+    textDecoration: "none",
   },
   titleOther: {
     color: "#000000",

@@ -3,12 +3,10 @@ import HeaderOtherPage from "../../HeaderotherPages";
 
 export default function CGU() {
   return (
-    <div className="containerCgu">
+    <div className="conteneurCguH1">
       <HeaderOtherPage />
-
+      <h1>Conditions Générales d'Utilisation</h1>
       <section className="sectionCgu">
-        {" "}
-        <h2 clasname="h2vCgu">Conditions Générales d'Utilisation</h2>
         <h2>Définitions</h2>
         <p>
           <b>Client :</b> tout professionnel ou personne physique capable au

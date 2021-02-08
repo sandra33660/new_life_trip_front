@@ -198,11 +198,10 @@ body {
   margin-top: 5%;
   background-color: #dcd9d97e;
   padding: 5%;
-  text-align: center;
 }
 .containerCgu {
   height: 100%;
-  min-height: 2000px;
+
   background: linear-gradient(
       rgba(204, 204, 204, 0.35),
       rgba(204, 204, 204, 0.35)
@@ -212,4 +211,12 @@ body {
   padding-top: 131px;
   margin: 0 auto;
   padding: 130px 48px 24px;
+}
+.conteneurCguH1 h2 {
+  text-align: center;
+}
+.conteneurCguH1 h1 {
+  text-align: center;
+  margin-top: 5%;
+  font-family: "Arial Rounded MT Bold";
 }
