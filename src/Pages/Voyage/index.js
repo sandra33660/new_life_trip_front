@@ -20,11 +20,12 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    /*  maxWidth: 345, */
+    /* maxWidth: 345, */
     marginTop: "56.25%",
     marginLeft: "56.25%",
     paddingRight: "60.25%",
   },
+
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
@@ -57,10 +58,8 @@ export default function Voyage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:55000/api/v1/Catalog/trip", {
-      mode: "no-cors",
-      credentials: "include",
-      method: "GET",
+    fetch("http://localhost:55005/api/v1/Catalog/trip", {
+      mode: "cors",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -82,7 +81,6 @@ export default function Voyage() {
   return (
     <Grid>
       <HeaderOtherPage />
-
       {data.map((trip) => (
         <Grid item xs={2}>
           <Card className={classes.root} id={trip.idTrip}>
