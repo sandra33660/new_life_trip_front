@@ -3,6 +3,7 @@ import Accueil from "../Pages/Accueil";
 import Voyage from "../Pages/Voyage";
 import Contact from "../Pages/Contact";
 import CGU from "../Pages/CGU";
+
 import "../App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
