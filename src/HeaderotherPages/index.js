@@ -152,34 +152,6 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
-        </IconButton>
-        <p>Profil</p>
-      </MenuItem>
-    </Menu>
-  );
-
-  return (
-    <div className={classes.grow}>
-      <AppBar position="static" color="transparent">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          ></IconButton>
-
-          <Logo />
-
-          <Typography variant="h3" className={classes.titleOther}>
-            <span className={classes.span}>N</span>ew
-            <span className={classes.span}>L</span>ife
-            <span className={classes.span}>T</span>rip
-            <Typography variant="h6" className={classes.subtitle}>
-              - Un voyage pour une nouvelle vie -
-            </Typography>
-          </Typography>
           <Typography
             variant="h6"
             component={Link}
@@ -212,6 +184,35 @@ export default function PrimarySearchAppBar() {
           >
             CGU
           </Typography>
+          <AccountCircle />
+        </IconButton>
+        <p>Profil</p>
+      </MenuItem>
+    </Menu>
+  );
+
+  return (
+    <div className={classes.grow}>
+      <AppBar position="static" color="transparent">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+          ></IconButton>
+
+          <Logo />
+
+          <Typography variant="h3" className={classes.titleOther}>
+            <span className={classes.span}>N</span>ew
+            <span className={classes.span}>L</span>ife
+            <span className={classes.span}>T</span>rip
+            <Typography variant="h6" className={classes.subtitle}>
+              - Un voyage pour une nouvelle vie -
+            </Typography>
+          </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -236,6 +237,38 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
+              <Typography
+                variant="h6"
+                component={Link}
+                className={classes.title}
+                to="/"
+              >
+                Accueil
+              </Typography>
+              <Typography
+                variant="h6"
+                component={Link}
+                className={classes.title}
+                to="/voyage"
+              >
+                Voyage
+              </Typography>
+              <Typography
+                variant="h6"
+                component={Link}
+                className={classes.title}
+                to="/contact"
+              >
+                Contact
+              </Typography>
+              <Typography
+                variant="h6"
+                component={Link}
+                className={classes.title}
+                to="/CGU"
+              >
+                CGU
+              </Typography>
               <AccountCircle />
             </IconButton>
           </div>
