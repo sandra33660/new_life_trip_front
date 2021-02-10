@@ -14,7 +14,7 @@ export default function TripList({ data, addToCart }) {
   return (
     <Grid container justify="space-evenly">
       {data.map((trip) => (
-        <Grid key={trip.id} item xs={4}>
+        <Grid key={trip.idTrip} item xs={4}>
           <TripCard {...trip} addToCart={addToCart} />
         </Grid>
       ))}

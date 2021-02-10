@@ -45,8 +45,8 @@ export default function TripCard({
     title,
     price,
     numberOfParticipants,
-    startDate: Date.now(),
-    finalDate: Date.now(),
+    startDate,
+    finalDate,
   }));
   return (
     <Card className={classes.root}>
@@ -75,7 +75,7 @@ export default function TripCard({
           au {startDate}
         </Typography>
         <Typography variant="h4" component="p">
-          <Price value={price} /> / pers{" "}
+          <Price value={price} /> / personnes{" "}
         </Typography>{" "}
         {/* <IconButton arial-label="moins" onClick={() => dec()}>
           <IndeterminateCheckBox fontSize="inherit" />
