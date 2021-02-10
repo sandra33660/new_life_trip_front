@@ -1,133 +1,114 @@
 import React from "react";
+import { TRIP_MAX_COUNT } from "../Trip/index";
+import Price from "../Price/index";
+import {
+  CardActions,
+  Button,
+  CardMedia,
+  Card,
+  Typography,
+  CardContent,
+} from "@material-ui/core";
+import { string, number, func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import clsx from "clsx";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { string, number, Date } from "prop-types";
+import { useCounter } from "react-use";
 
+const imageSize = 375;
 const useStyles = makeStyles((theme) => ({
   root: {
-    /*  maxWidth: 345, */
-    marginTop: "56.25%",
-    marginLeft: "56.25%",
-    paddingRight: "60.25%",
+    maxWidth: imageSize,
+    margin: `${theme.spacing(2)}px auto`,
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-  avatar: {
-    backgroundColor: red[500],
+  button: {
+    flexGrow: 1,
+    backgroundColor: "#84C0B4",
+    color: "#FFFFFF",
   },
 }));
 
-export default function Card(
+export default function TripCard({
   idTrip,
   title,
+  details,
+  price,
+  photos,
+  addToCart,
+  numberOfParticipants,
   startDate,
   finalDate,
-  photo,
-  details,
-  numberOfParticipants
-) {
+}) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const [tripCount, { dec, inc }] = useCounter(1, TRIP_MAX_COUNT, 1);
+  const addedTrip = Array.from(new Array(tripCount), () => ({
+    idTrip,
+    title,
+    price,
+    numberOfParticipants,
+    startDate: Date.now(),
+    finalDate: Date.now(),
+  }));
   return (
-    <Grid>
-      <Grid item xs={2}>
-        <Card className={classes.root} id={idTrip}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                V
-              </Avatar>
-            }
-            action={
-              <IconButton aria-label="settings">
-                <MoreVertIcon />
-              </IconButton>
-            }
-            title={title}
-            subheader={startDate}
-          />
-          <CardMedia
-            className={classes.media}
-            image={photo}
-            title="destination"
-          />
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {details}
-            </Typography>
-          </CardContent>
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography paragraph>Plus de détails</Typography>
-              <Typography paragraph>{startDate}</Typography>
-              <Typography paragraph>{finalDate}</Typography>
-              <Typography paragraph>{numberOfParticipants}</Typography>
-              <Typography>activités hebergement</Typography>
-            </CardContent>
-          </Collapse>
-        </Card>
-      </Grid>
-      )
-    </Grid>
+    <Card className={classes.root}>
+      {photos && (
+        <CardMedia
+          component="img"
+          alt={title}
+          height="175"
+          image={photos}
+          title={title}
+        />
+      )}
+      <CardContent>
+        <Typography gutterBottom variant="h4" component="h2">
+          {title}
+        </Typography>
+        <Typography variant="h5" color="textSecondary" component="p">
+          {details}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {numberOfParticipants} personnes
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          du {finalDate}
+          <br></br>
+          au {startDate}
+        </Typography>
+        <Typography variant="h4" component="p">
+          <Price value={price} /> / pers{" "}
+        </Typography>{" "}
+        {/* <IconButton arial-label="moins" onClick={() => dec()}>
+          <IndeterminateCheckBox fontSize="inherit" />
+        </IconButton>
+        <span>{tripCount}</span>
+        <IconButton arial-label="plus" onClick={() => inc()}>
+          <AddBox fontSize="inherit" />
+        </IconButton> */}
+      </CardContent>
+      <CardActions>
+        <Button
+          className={classes.button}
+          variant="contained"
+          onClick={() => {
+            addToCart(...addedTrip);
+          }}
+        >
+          Choisir les activités
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
-Card.prototype = {
+TripCard.propTypes = {
   idTrip: number,
   title: string.isRequired,
   details: string.isRequired,
-  photo: string,
-  startDate: Date,
-  finalDate: Date,
+  price: number.isRequired,
+  photos: string,
+  addToCart: func,
   numberOfParticipants: number,
 };
-Card.defaultProps = {
-  photo: null,
+TripCard.defaultProps = {
+  photos: null,
+  addToCart: Function.prototype,
 };
