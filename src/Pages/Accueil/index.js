@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../Header/index";
+import HeaderOtherPages from "../../HeaderotherPages/index";
 import Sloggan from "../../Sloggan";
 
 import Title from "../../Title";
@@ -7,7 +7,7 @@ import Title from "../../Title";
 export default function Accueil() {
   return (
     <main className="sectionAccueil">
-      <Header />
+      <HeaderOtherPages />
       <section>
         <Title />
 

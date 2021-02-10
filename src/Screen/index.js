@@ -1,11 +1,11 @@
 import React from "react";
 import { node } from "prop-types";
-import Header from "../Header/index";
+import HeaderOtherPages from "../HeaderotherPages/index";
 
 export default function Screen({ children }) {
   return (
     <>
-      <Header />
+      <HeaderOtherPages />
       {children}
     </>
   );
