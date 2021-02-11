@@ -1,5 +1,5 @@
 import React from "react";
-import { TRIP_MAX_COUNT } from "../Trip/index";
+/* import { TRIP_MAX_COUNT } from "../Trip/index"; */
 import Price from "../Price/index";
 import {
   CardActions,
@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { string, number, func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { useCounter } from "react-use";
+/* import { useCounter } from "react-use"; */
 
 const imageSize = 375;
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +39,7 @@ export default function TripCard({
 }) {
   const classes = useStyles();
 
-  const [tripCount, { dec, inc }] = useCounter(1, TRIP_MAX_COUNT, 1);
+  /*  const [tripCount, { dec, inc }] = useCounter(1, TRIP_MAX_COUNT, 1);
   const addedTrip = Array.from(new Array(tripCount), () => ({
     idTrip,
     title,
@@ -47,7 +47,7 @@ export default function TripCard({
     numberOfParticipants,
     startDate,
     finalDate,
-  }));
+  })); */
   return (
     <Card className={classes.root}>
       {photos && (
@@ -60,10 +60,10 @@ export default function TripCard({
         />
       )}
       <CardContent>
-        <Typography gutterBottom variant="h4" component="h2">
+        <Typography gutterBottom variant="h4" component="h4">
           {title}
         </Typography>
-        <Typography variant="h5" color="textSecondary" component="p">
+        <Typography variant="h5" color="textSecondary" component="h5">
           {details}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -74,7 +74,7 @@ export default function TripCard({
           <br></br>
           au {startDate}
         </Typography>
-        <Typography variant="h4" component="p">
+        <Typography variant="h4" component="h4">
           <Price value={price} /> / personnes{" "}
         </Typography>{" "}
         {/* <IconButton arial-label="moins" onClick={() => dec()}>
@@ -90,7 +90,7 @@ export default function TripCard({
           className={classes.button}
           variant="contained"
           onClick={() => {
-            addToCart(...addedTrip);
+            /* addToCart(...addedTrip); */
           }}
         >
           Choisir les activités
