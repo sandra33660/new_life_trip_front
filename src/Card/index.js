@@ -77,13 +77,6 @@ export default function TripCard({
         <Typography variant="h4" component="h4">
           <Price value={price} /> / personnes{" "}
         </Typography>{" "}
-        {/* <IconButton arial-label="moins" onClick={() => dec()}>
-          <IndeterminateCheckBox fontSize="inherit" />
-        </IconButton>
-        <span>{tripCount}</span>
-        <IconButton arial-label="plus" onClick={() => inc()}>
-          <AddBox fontSize="inherit" />
-        </IconButton> */}
       </CardContent>
       <CardActions>
         <Button
