@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { string, number, func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+
 /* import { useCounter } from "react-use"; */
 
 const imageSize = 375;
@@ -18,12 +19,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: imageSize,
     margin: `${theme.spacing(2)}px auto`,
+    marginTop: "20%",
   },
   button: {
     flexGrow: 1,
     backgroundColor: "#84C0B4",
     color: "#FFFFFF",
   },
+  container: { alignItems: "flexStart" },
 }));
 
 export default function TripCard({
@@ -59,7 +62,7 @@ export default function TripCard({
           title={title}
         />
       )}
-      <CardContent>
+      <CardContent className={classes.container}>
         <Typography gutterBottom variant="h4" component="h4">
           {title}
         </Typography>
