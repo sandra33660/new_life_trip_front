@@ -120,7 +120,7 @@ body {
   flex-direction: column;
   max-width: 940px;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 5%;
   border-radius: 1px;
   text-align: center;
 }
@@ -159,7 +159,21 @@ body {
   padding: 16px;
   color: #8b8b8b;
 }
-
+.cards input {
+  padding: 3%;
+  margin: 10%;
+}
+.cards textarea {
+  padding: 20%;
+  margin: 10%;
+}
+.cards button {
+  width: 30%;
+  font-size: 20px;
+  color: #171f1d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
 .card-box {
   display: flex;
   flex: 1 1;
