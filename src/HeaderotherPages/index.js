@@ -197,7 +197,7 @@ export default function PrimarySearchAppBar() {
             className={classes.title}
             to="/voyage"
           >
-            Voyage
+            Voyages
           </Typography>
           <Typography
             variant="h6"
