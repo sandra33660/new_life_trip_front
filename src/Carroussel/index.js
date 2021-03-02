@@ -25,7 +25,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: 50,
     paddingLeft: theme.spacing(6),
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: "rgba(0, 0, 000, 0.25)",
+    color: "white",
+  },
+  footer: { backgroundColor: "rgba(0, 0, 000, 0.25)", color: "white" },
+  button: {
+    color: "white",
   },
   img: {
     display: "block",
@@ -74,12 +79,14 @@ export default function Carroussel() {
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
+        className={classes.footer}
         steps={maxSteps}
         position="static"
         variant="text"
         activeStep={activeStep}
         nextButton={
           <Button
+            className={classes.button}
             size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
@@ -93,7 +100,12 @@ export default function Carroussel() {
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button
+            className={classes.button}
+            size="small"
+            onClick={handleBack}
+            disabled={activeStep === 0}
+          >
             {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (
