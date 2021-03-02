@@ -18,7 +18,7 @@ const imageSize = 375;
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: imageSize,
-    margin: `${theme.spacing(2)}px auto`,
+    margin: `${theme.spacing(1)}px auto`,
     marginTop: "20%",
   },
   button: {
@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#84C0B4",
     color: "#FFFFFF",
   },
-  container: { alignItems: "flexStart" },
+  container: {
+    alignItems: "flexStart",
+  },
 }));
 
 export default function TripCard({
