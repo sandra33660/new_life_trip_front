@@ -7,10 +7,7 @@ export default function Contact() {
       <HeaderOtherPage />
 
       <div className="content">
-        <h2 clasname="h2voyage">Contact</h2>
-        <div className="cards">
-          <ContactForm />
-        </div>
+        <ContactForm />
       </div>
     </div>
   );

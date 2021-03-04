@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import { string, number, func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-
 /* import { useCounter } from "react-use"; */
 
 const imageSize = 375;
@@ -79,7 +78,7 @@ export default function TripCard({
           <br></br>
           au {startDate}
         </Typography>
-        <Typography variant="h4" component="h4">
+        <Typography variant="h6" component="h6">
           <Price value={price} /> / personnes{" "}
         </Typography>{" "}
       </CardContent>
