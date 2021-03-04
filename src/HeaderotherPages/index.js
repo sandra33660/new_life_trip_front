@@ -12,6 +12,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Logo from "../Logo/index";
 import { Link } from "react-router-dom";
+import SignUp from "../Pages/Iscription/index";
+import SignIn from "../Pages/Connexion/index";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -132,8 +134,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profil</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Mon compte</MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <SignUp />
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <SignIn />
+      </MenuItem>
     </Menu>
   );
 
@@ -157,6 +163,7 @@ export default function PrimarySearchAppBar() {
         >
           <AccountCircle />
         </IconButton>
+
         <p>Profil</p>
       </MenuItem>
     </Menu>
@@ -221,7 +228,7 @@ export default function PrimarySearchAppBar() {
             </div>
 
             <InputBase
-              placeholder="Search…"
+              placeholder="Recherche..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
