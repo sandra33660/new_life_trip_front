@@ -1,6 +1,6 @@
 const baseUrlApi =
   process.env.REACT_APP_BASE_URL_API ||
-  "https://newlifetripwebapi.azurewebsites.net//Catalog";
+  "https://newlifetripwebapi.azurewebsites.net/Catalog";
 const responseToJson = (response) => response.json();
 
 export default function newlifetripfetch(route) {
