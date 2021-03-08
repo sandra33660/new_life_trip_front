@@ -30,14 +30,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TripCard({
-  idTrip,
-  title,
-  details,
+export default function ActivityCard({
+  idActivity,
+
   price,
-  photos,
-  addToCart,
-  numberOfParticipants,
+  activitiesPhotoAlbum,
+
+  numberOfPlacesTotal,
   startDate,
   finalDate,
 }) {
@@ -54,24 +53,17 @@ export default function TripCard({
   })); */
   return (
     <Card className={classes.root}>
-      {photos && (
+      {activitiesPhotoAlbum && (
         <CardMedia
           component="img"
-          alt={title}
+          alt={activitiesPhotoAlbum}
           height="175"
-          image={photos}
-          title={title}
+          image={activitiesPhotoAlbum}
         />
       )}
       <CardContent className={classes.container}>
-        <Typography gutterBottom variant="h4" component="h4">
-          {title}
-        </Typography>
-        <Typography variant="h5" color="textSecondary" component="h5">
-          {details}
-        </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {numberOfParticipants} personnes
+          {numberOfPlacesTotal} personnes
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           du {finalDate}
@@ -96,16 +88,15 @@ export default function TripCard({
     </Card>
   );
 }
-TripCard.propTypes = {
-  idTrip: number,
-  title: string.isRequired,
-  details: string.isRequired,
+ActivityCard.propTypes = {
+  idActivity: number,
+
   price: number.isRequired,
-  photos: string,
+  activitiesPhotoAlbum: string,
   addToCart: func,
-  numberOfParticipants: number,
+  numberOfPlacesTotal: number,
 };
-TripCard.defaultProps = {
-  photos: null,
+ActivityCard.defaultProps = {
+  activitiesPhotoAlbum: null,
   addToCart: Function.prototype,
 };
