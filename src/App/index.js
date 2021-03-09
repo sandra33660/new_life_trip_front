@@ -15,7 +15,6 @@ export default function App() {
       <Router>
         <Route exact path="/" component={Accueil} />
         <Route exact path="/voyage" component={TripListScreen} />
-
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/cgu" component={CGU} />
       </Router>
