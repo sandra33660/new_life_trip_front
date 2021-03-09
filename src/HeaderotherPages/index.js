@@ -212,14 +212,6 @@ export default function PrimarySearchAppBar() {
             className={classes.title}
             to="/activites"
           >
-            Activités
-          </Typography>
-          <Typography
-            variant="h6"
-            component={Link}
-            className={classes.title}
-            to="/contact"
-          >
             Contact
           </Typography>
           <Typography
